@@ -9,6 +9,8 @@ Current events emitted:
 * `throttle-axis`
 * `fire-button`
 
+Made quickly for the use at Digimakers interfacing with nodecopter library
+
 ## Requirements
-* node-hid
+* `node-hid`
 

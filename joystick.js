@@ -10,6 +10,8 @@ function Joystick() {
 	var joystick = new HID.HID(devices[0].path);
 	console.log(joystick);
 	var _this = this;
+	var prevFire = 0;
+	this.setMaxListeners(2);
 
 	joystick.on("data", function(data) {
 		// All data recieved is little endian
@@ -73,7 +75,9 @@ function Joystick() {
 		// Set to 2 when pressed
 		var fire = data.readUInt8(8);
 		fire = (fire & 0x02) >>> 1; 
-		_this.emit("fire-button", fire);
+		if (fire != prevFire) {
+			_this.emit("fire-button", fire);
+		}
 
 	});
 
